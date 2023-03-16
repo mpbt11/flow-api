@@ -1,5 +1,5 @@
 const { Pool } = require("pg");
-const { internalServerError } = require("../helpers/messageResponseHelpers");
+const { handleDatabaseError } = require("../utils/databaseErrorHandlerUtils");
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -10,7 +10,7 @@ async function connectToDatabase(callback, res) {
     try {
       return await callback(client);
     } catch (err) {
-      internalServerError("Erro interno", res);
+      handleDatabaseError(err, res)
     } finally {
       client.release();
     }

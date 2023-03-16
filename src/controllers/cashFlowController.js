@@ -1,6 +1,6 @@
 const { connectToDatabase } = require("../config/connectToDatabase");
 const {
-  onSucess,
+  onSuccess,
   notFound,
   created,
   badRequest,
@@ -45,7 +45,7 @@ module.exports = {
       const cashFlow = await cashFlowModel.getById(createFormParams(req));
 
       if (cashFlow)
-        return onSucess("Consulta realizada com sucesso!", res, {
+        return onSuccess("Consulta realizada com sucesso!", res, {
           cashFlow,
         });
     }, res);
@@ -57,7 +57,7 @@ module.exports = {
       const cashFlow = await cashFlowModel.get();
 
       if (cashFlow)
-        return onSucess("Listagem realizada com sucesso!", res, {
+        return onSuccess("Listagem realizada com sucesso!", res, {
           cashFlow,
         });
     }, res);
@@ -70,7 +70,7 @@ module.exports = {
 
       if (cashFlow == 0) return notFound("O item informado não existe!", res);
 
-      return onSucess("Deletado com sucesso!", res, {
+      return onSuccess("Deletado com sucesso!", res, {
         cashFlow,
       });
     }, res);

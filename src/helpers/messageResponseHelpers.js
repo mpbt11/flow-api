@@ -2,7 +2,7 @@ function messageResponse(status, message, res, data) {
   return res.status(status).json({ status, message, ...(data && { data }) });
 }
 
-function onSucess(message, res, data) {
+function onSuccess(message, res, data) {
   return messageResponse(200, message, res, data);
 }
 
@@ -10,7 +10,7 @@ function created(message, res, data) {
   return messageResponse(201, message, res, data);
 }
 
-function onSucessNoContent(message, res) {
+function onSuccessNoContent(message, res) {
   return messageResponse(204, message, res);
 }
 
@@ -39,9 +39,9 @@ function serviceUnavailable(message, res) {
 }
 
 module.exports = {
-  onSucess,
+  onSuccess,
   created,
-  onSucessNoContent,
+  onSuccessNoContent,
   badRequest,
   unauthorized,
   forbidden,

@@ -6,15 +6,15 @@ const pool = new Pool({
 });
 
 async function connectToDatabase(callback, res) {
-    const client = await pool.connect();
-    try {
-      return await callback(client);
-    } catch (err) {
-      handleDatabaseError(err, res)
-    } finally {
-      client.release();
-    }
+  const client = await pool.connect();
+  try {
+    return await callback(client);
+  } catch (err) {
+    handleDatabaseError(err, res);
+  } finally {
+    client.release();
   }
+}
 
 module.exports = {
   connectToDatabase,

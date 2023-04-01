@@ -56,24 +56,11 @@ const createValidatorsBody = [
     .withMessage("O tipo do custo é obrigatório")
     .isLength({ min: 4, max: 8 })
     .custom((value, { req }) => {
-      const allowedTypes = ["fixa", "variavel"];
+      const allowedTypes = ["fixa", "variável"];
       return allowedTypes.includes(value);
     })
     .withMessage(
-      "O tipo do custo deve ser informado corretamente. Ex: 'fixa' ou 'variavel'"
-    ),
-  validateRequest,
-
-  body("flow")
-    .notEmpty()
-    .withMessage("O tipo do fluxo é obrigatório")
-    .isLength({ min: 5, max: 7 })
-    .custom((value, { req }) => {
-      const allowedFlows = ["saida", "entrada"];
-      return allowedFlows.includes(value);
-    })
-    .withMessage(
-      "O tipo do fluxo deve ser informado corretamente. Ex: 'saida' ou 'entrada'"
+      "O tipo do custo deve ser informado corretamente. Ex: 'fixa' ou 'variável'"
     ),
   validateRequest,
 ];
@@ -146,24 +133,11 @@ const createValidator = [
     .withMessage("O tipo do custo é obrigatório")
     .isLength({ min: 4, max: 8 })
     .custom((value, { req }) => {
-      const allowedTypes = ["fixa", "variavel"];
+      const allowedTypes = ["fixa", "variável"];
       return allowedTypes.includes(value);
     })
     .withMessage(
-      "O tipo do custo deve ser informado corretamente. Ex: 'fixa' ou 'variavel'"
-    ),
-  validateRequest,
-
-  body("flow")
-    .notEmpty()
-    .withMessage("O tipo do fluxo é obrigatório")
-    .isLength({ min: 5, max: 7 })
-    .custom((value, { req }) => {
-      const allowedFlows = ["saida", "entrada"];
-      return allowedFlows.includes(value);
-    })
-    .withMessage(
-      "O tipo do fluxo deve ser informado corretamente. Ex: 'saida' ou 'entrada'"
+      "O tipo do custo deve ser informado corretamente. Ex: 'fixa' ou 'variável'"
     ),
   validateRequest,
 ];

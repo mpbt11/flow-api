@@ -1,5 +1,5 @@
 exports.createFormBody = ({
-  body: { id_category, value, reference_day, start_date, end_date, type, flow },
+  body: { id_category, value, reference_day, start_date, end_date, type },
 }) => {
   return {
     id_category,
@@ -7,8 +7,7 @@ exports.createFormBody = ({
     reference_day,
     start_date,
     end_date,
-    type,
-    flow,
+    type
   };
 };
 
@@ -20,7 +19,7 @@ exports.createFormParams = ({ params: { id_flow_cash } }) => {
 
 exports.createForm = ({
   params: { id_flow_cash },
-  body: { id_category, value, reference_day, start_date, end_date, type, flow },
+  body: { id_category, value, reference_day, start_date, end_date, type },
 }) => {
   return {
     id_flow_cash,
@@ -30,6 +29,5 @@ exports.createForm = ({
     start_date,
     end_date,
     type,
-    flow,
   };
 };

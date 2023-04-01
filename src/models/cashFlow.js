@@ -5,7 +5,9 @@ class CashFlowModel {
 
   async get() {
     const query = `SELECT 
-                    *
+                    *,
+                    ffc.type as account_type,
+                    fca.type as transaction_type
                   FROM
                     flow.flow_cash ffc
                   INNER JOIN 
@@ -25,10 +27,9 @@ class CashFlowModel {
                       reference_day, 
                       start_date, 
                       end_date, 
-                      type, 
-                      flow
+                      type
                       ) VALUES (
-                          $1, $2, $3, $4, $5, $6, $7
+                          $1, $2, $3, $4, $5, $6
                           ) RETURNING *`;
 
     const values = [
@@ -37,8 +38,7 @@ class CashFlowModel {
       data.reference_day,
       data.start_date,
       data.end_date,
-      data.type,
-      data.flow,
+      data.type
     ];
 
     const result = await this._connection.query(query, values);
@@ -54,8 +54,7 @@ class CashFlowModel {
                     reference_day = $4, 
                     start_date = $5, 
                     end_date = $6, 
-                    type = $7, 
-                    flow = $8
+                    type = $7
                   WHERE
                     id_flow_cash = $1
                   RETURNING *`;
@@ -67,8 +66,7 @@ class CashFlowModel {
       data.reference_day,
       data.start_date,
       data.end_date,
-      data.type,
-      data.flow,
+      data.type
     ];
 
     const result = await this._connection.query(query, values);
@@ -77,11 +75,17 @@ class CashFlowModel {
 
   async getById(data) {
     const query = `SELECT 
-                    *
+                    *,
+                    ffc.type as account_type,
+                    fca.type as transaction_type
                   FROM
-                    flow.flow_cash 
+                    flow.flow_cash ffc
+                  INNER JOIN 
+                    flow.category fca
+                  ON
+                    fca.id_category = ffc.id_category
                   WHERE
-                    id_flow_cash = $1`;
+                    ffc.id_flow_cash = $1`;
 
     const values = [
       data.id_flow_cash

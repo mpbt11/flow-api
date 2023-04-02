@@ -23,7 +23,8 @@
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.2"
+    "babel-loader": "^9.1.2",
+    "k6": "0.0.0"
   },
   "scripts": {
     "start": "nodemon src/server.js",

@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const cashflow = require("./routes/cashFlow");
+const category = require("./routes/category");
 const uploadAws = require("./routes/uploadAws");
 
 dotenv.config();
